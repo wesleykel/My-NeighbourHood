@@ -1,0 +1,59 @@
+.wrapper{
+margin-top: 5em;
+  
+}
+
+.wrapper ul{
+
+    border:  gray 1px solid;
+    margin: 0 auto;
+    width: 60%;
+    padding: 1em;
+    border-radius: 2px;
+}
+
+.wrapper li{
+margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+flex-wrap: wrap;
+    text-align: center;
+    align-items: center;
+list-style: none;
+width: 60vw;
+}
+
+.wrapper input  {
+margin: 0 auto;
+    width:50vw;
+    height: 2em;
+    /*padding: 1em;*/
+}
+
+.wrapper select{
+
+    width: 50vw;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.wrapper textarea{
+    width: 50vw;
+    height: 10em;
+    margin: 0 auto;
+
+    border: 1px solid lightgray;
+
+}
+
+.wrapper label{
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.wrapper button{
+margin-top: 2em;
+
+}
+
