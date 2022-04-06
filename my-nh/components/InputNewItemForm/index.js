@@ -7,12 +7,13 @@ import storage from '../../firebase/firebase'
 const InputForm = () => {
     const [title , setTitle] = useState("")
     const [image , setImage] = useState("")
-    const allInputs ={imgUrl:""}
+    //const allInputs ={imgUrl:""}
     const [imageURL, setImageURL] = useState("")
     const [text , setText] = useState("")
     const [catergories, setCatergories] = useState("Electronics")
     const [object , setObject] = useState()
-const [progress, setProgress] = useState()
+    const [progress, setProgress] = useState()
+    const [condition, setCondition] = useState()
 const router = useRouter()
 
 const storage = getStorage()
@@ -42,9 +43,12 @@ setProgress(progress)
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
       setImageURL(downloadURL)
 
-      setObject({image:downloadURL})
     })
+
+     setObject({image:imageURL, title: title, cat:catergories, descrip:text , condition:condition})
+     router.push("/")
 }
+     
 )
 }
 
@@ -52,7 +56,7 @@ setProgress(progress)
 
     
 console.log(object)  
-  console.log(image)  
+ 
     return (
  <form className={style.wrapper} onSubmit={handleSubmit}  action="" method="post">
 <ul>
@@ -74,6 +78,15 @@ console.log(object)
 </select>
 </li>
 <li>
+<label>Condition</label>
+<select  onChange={(e)=>{setCondition(e.target.value)}} required={true} >
+<option value="New">New</option>
+<option value="Used">Used</option>
+
+</select>
+
+</li>
+<li>
 <label>Picture</label>
 <input  name="pic" type="file" placeholder='picture' onChange={(e)=>{setImage(e.target.files[0])}} required={true}></input>
 <p>{progress}</p>
@@ -83,6 +96,12 @@ console.log(object)
 <textarea name="descrip" onChange={(e)=>{setText(e.target.value)}}  required={true}></textarea>
 
 </li>
+
+<li>
+<label>Postcode</label>
+<input type="text"></input>
+</li>
+
 <li className="button">
 <button type="submit">Post your item</button>
 
@@ -92,7 +111,7 @@ console.log(object)
 
 </ul>
 
- <img src={imageURL} alt="dog"></img>
+
   </form>
 
 

@@ -8,7 +8,7 @@ margin-top: 5em;
     border:  gray 1px solid;
     margin: 0 auto;
     width: 60%;
-    padding: 1em;
+   /* padding: 1em;*/
     border-radius: 2px;
 }
 
@@ -21,14 +21,15 @@ flex-wrap: wrap;
     text-align: center;
     align-items: center;
 list-style: none;
-width: 60vw;
+width: 50vw;
 }
 
 .wrapper input  {
 margin: 0 auto;
-    width:50vw;
+    width:49vw;
     height: 2em;
     /*padding: 1em;*/
+
 }
 
 .wrapper select{
@@ -39,7 +40,7 @@ margin: 0 auto;
 }
 
 .wrapper textarea{
-    width: 50vw;
+    width: 49vw;
     height: 10em;
     margin: 0 auto;
 
@@ -54,6 +55,51 @@ margin: 0 auto;
 
 .wrapper button{
 margin-top: 2em;
+
+}
+
+.picInput{
+
+/*border:1px  red solid;*/
+width: 20%;
+
+}
+
+
+
+@media (max-width: 1042px) { 
+
+
+.wrapper ul {
+
+/*border: 1px red solid;*/
+width: 90vw;
+
+}
+
+.wrapper li{
+
+    width: 80vw; 
+}
+
+.wrapper input{
+    width: 98%;
+
+
+}
+.wrapper select{
+    width: 100%;
+
+}
+
+.wrapper textarea{
+
+    width: 98%;
+
+}
+
+
+
 
 }
 

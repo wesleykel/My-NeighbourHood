@@ -1,0 +1,100 @@
+.wrapper{
+
+
+
+    width:80vw;
+    border: 1px solid lightgray;
+    margin: 0 auto;
+    height: 100vh;
+}
+
+.searchBar{
+
+
+    height: 2rem;
+    border-bottom:lightgray 2px solid;
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-end;
+    align-items: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+
+.searchBar .searchBarInner{
+    /*border:blue 1px dotted;*/
+    display:flex;
+    flex-direction:row;
+    justify-content: flex-end;
+    align-items: baseline;
+    gap: 2em;
+
+
+}
+
+.options{
+/*border: green solid 2px;*/
+flex: 0 auto;
+}
+
+#button{
+
+
+    margin-right:2em ;
+}
+
+
+/*Iphone X*/
+@media (max-width: 1042px) { 
+
+.wrapper{
+
+    border: none;
+    width:100%
+}
+
+
+    .searchBar{
+
+  /*  border: blue 1px solid;*/
+   display: block;
+ width:90vw;
+ margin: 0 auto;
+       border:none;
+
+}
+
+    .searchBar .searchBarInner{
+ 
+        /*display:flex;
+        flex-direction:row;
+        
+        align-items: baseline;
+        gap: 2em;*/
+        display: grid;
+        grid-template-rows: 1fr 1fr;
+        width:90vw;
+        margin: 0 auto;
+   justify-content: center;
+   gap: 1em;
+    }
+
+    .options{
+display:grid ;
+grid-template-rows: 1fr 1fr;
+text-align: center;
+/*border: dodgerblue 1px solid;*/
+width: 60vw;
+    }
+
+
+    #button{
+
+
+        margin-right:0em ;
+    }
+    
+
+    
+}

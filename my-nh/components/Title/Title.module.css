@@ -1,0 +1,21 @@
+.wrapper{
+
+
+
+    /*border: 1px  solid;*/
+    width:80vw;
+    margin: 0 auto;
+ text-align: center;
+ padding-top: 1em;
+}
+
+.wrapper2{
+
+
+    /*border: 1px red solid;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+
+
+}
