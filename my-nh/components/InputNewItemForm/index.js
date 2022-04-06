@@ -4,6 +4,8 @@ import  {useRouter } from "next/router"
 import { getStorage ,ref ,uploadBytesResumable, getDownloadURL } from 'firebase/storage'
 import style from "./inputNew.module.css"
 import storage from '../../firebase/firebase'
+import randomstring from "randomstring"
+
 const InputForm = () => {
     const [title , setTitle] = useState("")
     const [image , setImage] = useState("")
@@ -14,18 +16,25 @@ const InputForm = () => {
     const [object , setObject] = useState()
     const [progress, setProgress] = useState()
     const [condition, setCondition] = useState()
+
+
+
 const router = useRouter()
 
 const storage = getStorage()
 const handleSubmit = (e) => {
 
 e.preventDefault()  
+
+
 if(image === ""){
 
 console.log(`not an image ${typeof(image.name)}`)
 return
 }
-const storageRef =ref (storage,`images/${image.name}`)
+const randomString = randomstring.generate(12)
+const storageRef =ref (storage,`images/${randomString}${image.name}`)
+
 const uploadTask = uploadBytesResumable(storageRef,image)
 
 uploadTask.on("state_changed",
