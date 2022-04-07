@@ -5,7 +5,7 @@ const DisplayCard = ({pic ,title , condition, price, postcode , cat, description
         <div className={style.wrapper}>
 
         <div className={style.picContainer}>
-            <img  src={pic} alt={title}></img>
+            <img className={style.picture} src={pic} alt={title}></img>
         </div>
 
         <div className={style.textContainer}>
