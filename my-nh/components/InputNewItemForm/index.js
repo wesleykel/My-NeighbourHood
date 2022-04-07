@@ -18,11 +18,11 @@ const InputForm = () => {
     const [progress, setProgress] = useState()
     const [condition, setCondition] = useState()
   
-
+let url =""
 
 const router = useRouter()
 
-const storage = getStorage()
+ const  storage =  getStorage()
 const handleSubmit = (e) => {
 
 e.preventDefault()  
@@ -52,34 +52,33 @@ setProgress(progress)
 
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
       setImageURL(downloadURL)
-
+    console.log(downloadURL)
+url = downloadURL
+console.log(url)
     })
 
      setObject({image:imageURL, title: title, cat:catergories, descrip:text , condition:condition})
 
-    
+
      router.push("/")
-    
+   
 },
-    
-
-
-)
-
-}
-
-function post(){
-fetch("https://neighbouthood.herokuapp.com/users",{
+setTimeout(function(){
+ fetch("https://neighbouthood.herokuapp.com/users",{
   method:"POST",
-  mode:"cors",
-  headers:{"Content-Type": "application/json"},
+
+  headers:{
+    'Access-Control-Allow-Origin' : '*',
+    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+    "Content-Type": "application/json"
+  },
   body: JSON.stringify({
   
-    imageURL:"hi",
-    title:"does",
-    description:"this",
-    condition:"work",
-    postcode:"shabba",
+    imageURL:`${url}`,
+    title:title,
+    description:text,
+    condition: condition,
+    postcode:postCode,
     cat:"catergories",
   
   
@@ -88,10 +87,18 @@ fetch("https://neighbouthood.herokuapp.com/users",{
 
     console.log("new thing added")
   })
-}
+
     
-console.log(object)  
+
+},1000)
+)
+
+}
+
+
+    
  
+
     return (
  <form className={style.wrapper} onSubmit={handleSubmit}  action="" method="post">
 <ul>
@@ -146,7 +153,7 @@ console.log(object)
 
 </ul>
 
-<button onClick={post}>Post</button>
+
   </form>
 
 
