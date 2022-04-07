@@ -90,7 +90,7 @@ setTimeout(function(){
 
     
 
-},1000)
+},2000)
 )
 
 }
