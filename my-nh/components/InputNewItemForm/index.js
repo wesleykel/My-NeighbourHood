@@ -62,7 +62,7 @@ console.log(url)
 
      router.push("/")
    
-},
+}).then(
 setTimeout(function(){
  fetch("https://neighbouthood.herokuapp.com/users",{
   method:"POST",
@@ -91,8 +91,8 @@ setTimeout(function(){
     
 
 },2000)
-)
 
+)
 }
 
 
