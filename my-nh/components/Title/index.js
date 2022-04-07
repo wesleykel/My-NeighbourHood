@@ -32,12 +32,13 @@ if( theme === themes.dark){
 
     return (
         <div  /*style={themes}*/ className={style.wrapper}>
-       
+       <div className={style.intro} ><img id={style.logo} src="pngwing.com.png"></img></div>
+       <div className={style.intro}>
            <h1>My Neighbourhood</h1> 
            <h3>Re-Home , Reuse, Recycle</h3>
-           <div className={style.wrapper2}>
+           
 
-               <button /*onClick={()=>toggleTheme (themes == "dark" ? "light" : "dark")}*/>DARK</button>
+              
            </div>
         </div>
     )

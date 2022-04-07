@@ -12,11 +12,12 @@ const InputForm = () => {
     //const allInputs ={imgUrl:""}
     const [imageURL, setImageURL] = useState("")
     const [text , setText] = useState("")
+    const [postCode, setpostCode]= useState("")
     const [catergories, setCatergories] = useState("Electronics")
     const [object , setObject] = useState()
     const [progress, setProgress] = useState()
     const [condition, setCondition] = useState()
-
+  
 
 
 const router = useRouter()
@@ -55,14 +56,39 @@ setProgress(progress)
     })
 
      setObject({image:imageURL, title: title, cat:catergories, descrip:text , condition:condition})
+
+    
      router.push("/")
-}
-     
+    
+},
+    
+
+
 )
+
 }
 
+function post(){
+fetch("https://neighbouthood.herokuapp.com/users",{
+  method:"POST",
+  mode:"cors",
+  headers:{"Content-Type": "application/json"},
+  body: JSON.stringify({
+  
+    imageURL:"hi",
+    title:"does",
+    description:"this",
+    condition:"work",
+    postcode:"shabba",
+    cat:"catergories",
+  
+  
+  })
+  }).then(()=>{
 
-
+    console.log("new thing added")
+  })
+}
     
 console.log(object)  
  
@@ -112,7 +138,7 @@ console.log(object)
 </li>
 
 <li className="button">
-<button type="submit">Post your item</button>
+<button onChange={(e)=>{setpostCode(e.target.value)}}type="submit">Post your item</button>
 
 </li>
 
@@ -120,7 +146,7 @@ console.log(object)
 
 </ul>
 
-
+<button onClick={post}>Post</button>
   </form>
 
 

@@ -2,20 +2,36 @@
 
 
 
-    /*border: 1px  solid;*/
+    /*border: 1px  solid lightgrey;*/
     width:80vw;
     margin: 0 auto;
  text-align: center;
  padding-top: 1em;
+ display: grid;
+ grid-template-columns: 50% 50%;
+}
+#logo{
+ width:70%;
+ height: auto;
+
+
+}
+.intro{
+
+
+   /* border: 1px red solid;*/
+    display: flex;
+    flex-direction: column;
+   justify-content: flex-start;
+    /*align-items: center;*/
+
+}
+.intro h1{
+
+    font-size:4vw ;
 }
 
-.wrapper2{
+.intro h3{
 
-
-    /*border: 1px red solid;*/
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-
-
+    font-size:2vw ; 
 }
