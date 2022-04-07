@@ -141,7 +141,7 @@ setTimeout(function(){
 
 <li>
 <label>Postcode</label>
-<input type="text"></input>
+<input type="text"   onChange={(e)=>{setpostCode(e.target.value)}}  ></input>
 </li>
 
 <li className="button">
