@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import  {useRouter } from "next/router"
 //import { storage } from '../../firebase/firebase'
 import { getStorage ,ref ,uploadBytesResumable, getDownloadURL } from 'firebase/storage'
@@ -23,16 +23,18 @@ let url =""
 const router = useRouter()
 
  const  storage =  getStorage()
-const handleSubmit = (e) => {
+ 
+ 
+ const handleSubmit = (e) => {
 
-e.preventDefault()  
+//e.preventDefault()  
 
 
-if(image === ""){
+/*if(!image){
 
 console.log(`not an image ${typeof(image.name)}`)
 return
-}
+}*/
 const randomString = randomstring.generate(12)
 const storageRef =ref (storage,`images/${randomString}${image.name}`)
 
@@ -57,50 +59,61 @@ url = downloadURL
 console.log(url)
     })
 
-     setObject({image:imageURL, title: title, cat:catergories, descrip:text , condition:condition})
-
-
-     router.push("/")
+     
    
-}).then(
-setTimeout(function(){
- fetch("https://neighbouthood.herokuapp.com/users",{
-  method:"POST",
+})
 
-  headers:{
-    'Access-Control-Allow-Origin' : '*',
-    'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({
-  
-    imageURL:`${url}`,
-    title:title,
-    description:text,
-    condition: condition,
-    postcode:postCode,
-    cat:"catergories",
-  
-  
-  })
-  }).then(()=>{
 
-    console.log("new thing added")
-  })
 
-    
-
-},2000)
-
-)
 }
+
+useEffect(()=>{
+
+
+handleSubmit()
+
+
+},[image])
+
+function postData(){
+
+  fetch("https://neighbouthood.herokuapp.com/users",{
+    method:"POST",
+  
+    headers:{
+      //'Access-Control-Allow-Origin' : '*',
+      //'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+    
+      imageURL:imageURL,
+      title:title,
+      description:text,
+      condition: condition,
+      postcode:postCode,
+      cat:"catergories",
+    
+    
+    })
+
+  
+    })
+       router.push("/")
+   console.log(imageURL,title,catergories,text ,condition)
+      console.log("new thing added")
+   
+ }
+ console.log(image)
+ return (
+
 
 
     
  
 
-    return (
- <form className={style.wrapper} onSubmit={handleSubmit}  action="" method="post">
+   
+ <form className={style.wrapper} /*onSubmit={handleSubmit}*/  action="" method="post">
 <ul>
 <li>
 <label>Title</label>
@@ -109,7 +122,8 @@ setTimeout(function(){
 <li>
 <label>Catergory</label>
 <select  onChange={(e)=>{setCatergories(e.target.value)}} required={true} >
-<option value="Electronics">Electronics</option>
+
+<option value={null}>Choose a catergory</option>
 <option value="Collectables & Antiques">Collectables & Antiques</option>
 <option value="Clothes">Clothing</option>
 <option value="Home & Garden">Home & Garden</option>
@@ -120,8 +134,9 @@ setTimeout(function(){
 </select>
 </li>
 <li>
-<label>Condition</label>
+<label> Your items condition</label>
 <select  onChange={(e)=>{setCondition(e.target.value)}} required={true} >
+<option value={null} >Choose a  condition</option>
 <option value="New">New</option>
 <option value="Used">Used</option>
 
@@ -130,8 +145,9 @@ setTimeout(function(){
 </li>
 <li>
 <label>Picture</label>
-<input  name="pic" type="file" placeholder='picture' onChange={(e)=>{setImage(e.target.files[0])}} required={true}></input>
+<input  name="pic" type="file" placeholder='picture' onChange={(e)=>{setImage(e.target.files[0])}}     required={true}></input>
 <p>{progress}</p>
+{/*<button onClick={handleSubmit}>upload photo</button>*/}
 </li>
 <li>
 <label>Description</label>  
@@ -141,11 +157,11 @@ setTimeout(function(){
 
 <li>
 <label>Postcode</label>
-<input type="text"   onChange={(e)=>{setpostCode(e.target.value)}}  ></input>
+<input type="text"   onChange={(e)=>{setpostCode(e.target.value)}}   ></input>
 </li>
 
 <li className="button">
-<button onChange={(e)=>{setpostCode(e.target.value)}}type="submit">Post your item</button>
+<button type='button' onClick={postData} >Post your item</button>
 
 </li>
 
