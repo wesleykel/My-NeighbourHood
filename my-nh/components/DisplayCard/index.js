@@ -9,13 +9,13 @@ const DisplayCard = ({pic ,title , condition, price, postcode , cat, description
         </div>
 
         <div className={style.textContainer}>
-          <h3>{title}</h3> 
-          <p>{condition}</p> 
-          <p>{description}</p>
-          <p>{postcode}</p>
-  
+          <h3 className={style.text}>{title}</h3> 
+          <p className={style.text} >{condition}</p> 
+        
+          <p className={style.text} >{postcode}</p>
+        <p className={style.text} >{description}</p>
          <p>{datePosted}</p>
-         <p>{cat}</p>
+         <p className={style.text} >{cat}</p>
         </div> 
         </div>
     )

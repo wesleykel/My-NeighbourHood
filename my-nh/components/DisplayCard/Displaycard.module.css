@@ -1,12 +1,41 @@
+.wrapper{
+
+border: 1px red dotted;
+height: fit-content;
+display: grid;
+grid-template-columns: 1fr 2fr ;
+
+
+}
+
+
 .picContainer{
 
+    width: fit-content;
+    height:fit-content;
+    border: 1px blue dotted;
 
 
 }
 .picture{
 
 border: 2px lime solid;
-width:20%;
-height:auto;
+width: 20vw;
+height:250px;
+
+}
+
+.textContainer{
+
+    border: 1px blue dotted;
+
+
+
+}
+
+.text{
+width:50%;
+border:2px  red solid;
+text-align: center;
 
 }

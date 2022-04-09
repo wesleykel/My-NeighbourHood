@@ -35,7 +35,7 @@ if( theme === themes.dark){
        <div className={style.intro} ><img id={style.logo} src="pngwing.com.png"></img></div>
        <div className={style.intro}>
            <h1>My Neighbourhood</h1> 
-           <h3>Re-Home , Reuse, Recycle</h3>
+           <h3>Re-Home , Recycle your unwanted stuff</h3>
            
 
               
