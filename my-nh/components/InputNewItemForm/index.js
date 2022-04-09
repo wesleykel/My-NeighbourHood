@@ -25,7 +25,7 @@ const router = useRouter()
  const  storage =  getStorage()
  
  
- const handleSubmit = (e) => {
+ const uploadPhoto = () => {
 
 //e.preventDefault()  
 
@@ -54,7 +54,7 @@ setProgress(progress)
 
     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL)=>{
       setImageURL(downloadURL)
-    console.log(downloadURL)
+
 url = downloadURL
 console.log(url)
     })
@@ -70,12 +70,19 @@ console.log(url)
 useEffect(()=>{
 
 
-handleSubmit()
+uploadPhoto()
 
 
 },[image])
 
 function postData(){
+ 
+  if(!title || !text ||!postCode  ){
+return
+
+
+  }
+
 
   fetch("https://neighbouthood.herokuapp.com/users",{
     method:"POST",
@@ -92,7 +99,7 @@ function postData(){
       description:text,
       condition: condition,
       postcode:postCode,
-      cat:"catergories",
+      cat:catergories,
     
     
     })
@@ -113,7 +120,7 @@ function postData(){
  
 
    
- <form className={style.wrapper} /*onSubmit={handleSubmit}*/  action="" method="post">
+ <form className={style.wrapper}    method="post">
 <ul>
 <li>
 <label>Title</label>
@@ -147,7 +154,7 @@ function postData(){
 <label>Picture</label>
 <input  name="pic" type="file" placeholder='picture' onChange={(e)=>{setImage(e.target.files[0])}}     required={true}></input>
 <p>{progress}</p>
-{/*<button onClick={handleSubmit}>upload photo</button>*/}
+
 </li>
 <li>
 <label>Description</label>  
